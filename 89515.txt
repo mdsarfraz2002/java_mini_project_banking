@@ -1,0 +1,4 @@
+  ACCOUNT NO = 89515
+  NAME = PREETHAN
+  BALANCE = 1000
+  password = JTARUNI

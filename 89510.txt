@@ -1,0 +1,4 @@
+  ACCOUNT NO = 89510
+  NAME = SARFRAZ
+  BALANCE = 500
+  password = 123456

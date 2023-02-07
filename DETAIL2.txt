@@ -1,0 +1,4 @@
+  ACCOUNT NO = 89511
+  NAME = sarfraz
+  BALANCE = 100
+  password = sarfraz rlck

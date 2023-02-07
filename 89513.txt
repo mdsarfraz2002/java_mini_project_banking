@@ -1,0 +1,4 @@
+  ACCOUNT NO = 89513
+  NAME = ARNISH
+  BALANCE = 100000
+  password = BANDARI

@@ -1,0 +1,396 @@
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+import java.awt.*;
+
+class Account
+{
+    String Name,Password;
+    int AccNo,Money;
+    int dd,mm,yy;
+    public Account(String n,int an,int mon,String p)
+    {
+        Name=n;
+        AccNo=an;
+        Money=mon;
+        Password=p;
+    }
+}
+
+
+public class pic extends JFrame
+{
+    
+    public  void   display( )
+    {
+
+        setTitle("BANK SECURITY");
+        setSize(1500,900);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+        setLayout(new BorderLayout());
+        setContentPane(new JLabel(new ImageIcon("C:\\Users\\sajjad\\Desktop\\computer project\\bank.png")));
+        setSize(800,550);
+    }
+    }
+
+ 
+public class new_Bank
+{
+
+    public static Calendar c=Calendar.getInstance();
+    public static int date=c.get(Calendar.DATE);
+    public static int month=c.get(Calendar.MONTH);
+    public static int year=c.get(Calendar.YEAR);
+    public static InputStreamReader isr=new InputStreamReader(System.in);
+    public static BufferedReader x=new BufferedReader(isr);
+    public static int Ano=89510;
+    public static Account Acc[]=new Account[1000000];
+    
+    public static void main() throws IOException
+    {
+        int hour=c.get(Calendar.HOUR);
+        int minute=c.get(Calendar.MINUTE);
+        int sec=c.get(Calendar.SECOND);
+        int newmonth=month+1;
+        try
+        {
+            int ch=1;
+            
+                System.out.println("");
+                System.out.println("");
+                System.out.print( "\t\t\t\t\t  Welcome to CITI BANK ");
+                System.out.println("\t\t\t\t\t"+"DATE-:" +date+"/"+newmonth+"/"+year);
+                System.out.println("");
+                System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t"+"TIME " +hour+":"+minute+":"+sec); 
+                
+            do
+            {
+                
+                System.out.println("  PLEASE SELECT THE FOLLOWING OPTION TO PROCEED    ");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("  1 -> Create Account      ");
+                System.out.println("  2 -> Withdrawl           ");
+                System.out.println("  3 -> Deposited           ");
+                System.out.println("  4 -> Check Account Money    ");
+                System.out.println("  5 -> Checking Master(only for  authorised person)    ");
+                System.out.println("  7 TO Exit ");
+                ch=Integer.parseInt(x.readLine());
+                if(ch==7)
+                {
+                    System.out.println("##########################################");
+                    System.out.println("Thank You For Banking with us ");
+                    System.out.println("Have A  GOOD DAY "); 
+                    pic cus=new pic();
+                    cus.display();
+                }
+                if(ch>=8)
+                {
+                    System.out.println("##########################################");
+                    System.out.println("You Made Some Mistake Try again."); 
+
+                }
+                switch(ch)
+                {
+                    case 1: createAccount(); break;
+                    case 2: withdrawl(); break;
+                    case 3: deposit(); break;
+                    case 4: checkAccount(); break;
+                    case 5: checkMaster(); break;
+                }
+            }while(ch<=6);
+        }
+        catch( Exception e){
+            System.out.println("##########################################");
+
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("ENTER 6 to TRY AGAIN!!");
+            int ex=Integer.parseInt(x.readLine());
+
+        }
+    }
+
+    private static void createAccount() throws IOException
+    {
+        try{
+
+            Calendar c=Calendar.getInstance();
+            int date=c.get(Calendar.DATE);
+            int month=c.get(Calendar.MONTH);
+            int year=c.get(Calendar.YEAR);
+            String n,p;
+            int m;
+            long ad;
+            System.out.println("##########################################");
+            System.out.println("Please Enter The Following Details To Create Your Account ");
+            System.out.println("");
+            System.out.print("Your Name : ");
+            n=x.readLine();
+            System.out.print("Your 12 Digit AADHAR Number : ");
+            ad=Long.parseLong(x.readLine());
+            if(String.valueOf(ad).length()<12){
+                System.out.println("##########################################");
+                System.out.println("You have entered wrong Aadhar Number");
+                System.out.println("ENTER 6 TRY AGAIN!!");
+                int ex=Integer.parseInt(x.readLine());
+
+            }else{
+
+                System.out.print("Opening Balance : ");
+                m=Integer.parseInt(x.readLine());
+                System.out.print("Your Password : ");
+                p=x.readLine();
+                int acc= Ano;
+
+                System.out.println("Your Account Number is : "+Ano);
+                System.out.println("");
+                System.out.print("YOUR ACCOUNT HAS BEEN CREATED");
+                Acc[Ano]=new Account(n,Ano,m,p);
+                Ano++;
+                if(acc==89510)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL.txt", "UTF-8");
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+
+                if(acc==89511)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL2.txt", "UTF-8");
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+                if(acc==89512)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL3.txt", "UTF-8");
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+                if(acc==89513)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL4.txt", "UTF-8");
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+            }
+        }
+        catch( Exception e){
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+            System.out.println("ENTER 6 TO TRY AGAIN!!");
+            int ex=Integer.parseInt(x.readLine());
+        }
+    }
+
+    private static void withdrawl() throws IOException
+    {
+        try{
+            String p;
+            int no,amt;
+            System.out.print("Your Account Number : ");
+            no=Integer.parseInt(x.readLine());
+            System.out.print("Password : ");
+            p=x.readLine();
+            if(no<Ano && p.equals(Acc[no].Password))
+            {
+                System.out.println("##########################################");
+                System.out.println("Welcome "+Acc[no].Name);
+                System.out.println("Balance = " + Acc[no].Money); 
+                System.out.print("Withdrawl Amount : ");
+                amt=Integer.parseInt(x.readLine());
+                int ad = Acc[no].Money-amt;
+
+                if(amt<=Acc[no].Money)
+                {
+                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    System.out.println("Balance left After Withdrawl = " +ad );
+                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    Acc[no].Money-=amt;
+                }
+                else
+                {
+                    System.out.println("##########################################");
+                    System.out.println("Only "+Acc[no].Money+" amount left in your Account");
+                    System.out.println("So you cannot Withdrawl "+amt);
+                }
+
+            }
+            else{
+                System.out.println("##########################################");
+                System.out.println("Your are Unauthorized Customer");
+            }
+        }
+        catch( Exception e){
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+            System.out.println("ENTER 6 TO TRY AGAIN!!");
+            int ex=Integer.parseInt(x.readLine());
+
+        }
+    }
+
+    private static void deposit() throws IOException
+    {
+        try
+        {
+            String p;
+            int no,amt;
+            System.out.print("Your Account Number : ");
+            no=Integer.parseInt(x.readLine());
+            System.out.print("Password : ");
+            p=x.readLine();
+            if(no<Ano && p.equals(Acc[no].Password))
+            {
+                System.out.println("##########################################");
+                System.out.println("Welcome "+Acc[no].Name);
+                System.out.println("Current Balance = " +Acc[no].Money );
+                System.out.print("Deposit Amount : ");
+                amt=Integer.parseInt(x.readLine());
+                int db=Acc[no].Money +amt;
+                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                System.out.println("Balance After Deposit = " + db);
+                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                Acc[no].Money+=amt;
+            }
+            else{
+                System.out.println("##########################################");
+                System.out.println("Your are Unauthorized Customer");}
+        }
+        catch( Exception e){
+
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+
+            System.out.println("ENTER 6 TO TRY AGAIN!!");
+            int ex=Integer.parseInt(x.readLine());
+
+        }
+
+    }  
+
+    private static void checkAccount() throws IOException
+    {
+        try{
+            String p;
+            int no,amt;
+            System.out.print("Your Account No. : ");
+            no=Integer.parseInt(x.readLine());
+            System.out.print("Password : ");
+            p=x.readLine();
+            if(no<Ano && p.equals(Acc[no].Password))
+            {
+                System.out.println("##########################################");
+                System.out.println("Your Account Number : "+ no);
+                System.out.println("Your Password : "+ p);
+                System.out.println("Your Name : "+Acc[no].Name);
+                System.out.println("Balance Amount : "+Acc[no].Money);
+
+            }
+            else
+            {
+                System.out.println("##########################################");
+                System.out.println("Your are Unauthorized Customer");
+            }
+
+        }
+
+        catch( Exception e){
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+            System.out.println("ENTER 6 TO TRY AGAIN!!");
+            int ex=Integer.parseInt(x.readLine());
+
+        }  
+    }
+
+    private static void checkMaster()
+    {
+
+        try{
+            System.out.println("##########################################");
+            System.out.print("ENTER THE MASTER PASSWORD TO CONTINUE -:  " );
+            String pass=x.readLine();
+            String pa= "SARFRAZ";
+            if(pass.equals(pa))
+                {
+                    System.out.println("##########################################");
+                    System.out.println(" ACCOUNT DETAILS ->");    
+                    BufferedReader r = new BufferedReader( new FileReader( "DETAIL.txt" ) );
+                    String C = "";
+                    String x = "";
+                    String z = "";
+                    String s = "", line = null;
+                    while ((line = r.readLine()) != null) {
+                        s += line;
+
+                    }
+
+                    System.out.println(s);
+                    BufferedReader l = new BufferedReader( new FileReader( "DETAIL2.txt" ) );
+                    while ((line = l.readLine()) != null) {
+                        z += line;
+
+                    }
+                    System.out.println(z);  
+                    BufferedReader Q = new BufferedReader( new FileReader( "DETAIL3.txt" ) );
+                    while ((line = Q.readLine()) != null) {
+                        x += line;
+
+                    }
+                    System.out.println(x);  
+                    BufferedReader P = new BufferedReader( new FileReader( "DETAIL4.txt" ) );
+                    while ((line = P.readLine()) != null) {
+                        C += line;
+
+                    }
+                    System.out.println(C);
+                    System.out.println("##########################################");
+                }
+                else{
+                    System.out.println("##########################################");
+                    System.out.println("ENTERED PASSWORD IS WRONG");
+                    System.out.println("##########################################");
+                }
+            }
+            catch( Exception e){
+
+            System.out.println("ohh!!no THERE IS ERROR IN THE PROGRAM CODE ");
+            System.out.println("ERROR  IS-: " +e);
+            System.out.println("Please  Try To Correct it!!");
+
+        }
+    
+    }      
+
+}

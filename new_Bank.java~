@@ -1,0 +1,668 @@
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+import java.awt.*;
+
+class Account
+{
+    String Name,Password;
+    int AccNo,Money;
+    int dd,mm,yy;
+    public Account(String n,int an,int mon,String p)
+    {
+        Name=n;
+        AccNo=an;
+        Money=mon;
+        Password=p;
+    }
+}
+
+class pic extends JFrame
+{
+
+    public void   display( )
+    {
+
+        setTitle("CITI BANK");
+        setSize(220,900);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+        setLayout(new BorderLayout());
+        setContentPane(new JLabel(new ImageIcon("bank.jpg")));
+        setSize(805,400);
+    }
+}
+
+public class new_Bank
+{
+
+    public static Calendar c=Calendar.getInstance();
+    public static int date=c.get(Calendar.DATE);
+    public static int month=c.get(Calendar.MONTH);
+    public static int year=c.get(Calendar.YEAR);
+    public static InputStreamReader isr=new InputStreamReader(System.in);
+    public static BufferedReader x=new BufferedReader(isr);
+    public static int Ano=89510;
+    
+    public static Account Acc[]=new Account[1000000];
+
+    public static void main() throws IOException
+    {
+        int hour=c.get(Calendar.HOUR);
+        int minute=c.get(Calendar.MINUTE);
+        int sec=c.get(Calendar.SECOND);
+        int newmonth=month+1;
+
+        try
+        {
+            int ch=1;
+
+            System.out.println("");
+            System.out.println("");
+            System.out.print( "\t\t\t\t\t  Welcome to CITI BANK ");
+            System.out.println("\t\t\t\t\t"+"DATE-:" +date+"/"+newmonth+"/"+year);
+            System.out.println("");
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t"+"TIME " +hour+":"+minute+":"+sec); 
+
+            System.out.println("  PLEASE SELECT THE FOLLOWING OPTION TO PROCEED    ");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("  1 -> Create Account      ");
+            System.out.println("  2 -> Withdrawl           ");
+            System.out.println("  3 -> Deposited           ");
+            System.out.println("  4 -> Check Account Balance    ");
+            System.out.println("  5 -> Apply For Loan    ");
+            System.out.println("  6 -> Checking Master(only for  authorised person)    ");
+            System.out.println("  7 TO Exit ");
+            ch=Integer.parseInt(x.readLine());
+            if (ch==7)
+            {
+                exit(); 
+            }
+
+            else
+            {
+                switch(ch)
+                {
+                    case 1: createAccount(); break;
+                    case 2: withdrawl(); break;
+                    case 3: deposit(); break;
+                    case 4: checkAccount(); break;
+                    case 5: loan(); break;
+                    case 6: checkMaster(); break;
+                    default:  System.out.println("YOU MADE SOME MISTAKE. ");
+                    
+                }
+
+                con();
+            }
+        }
+        catch( Exception e){
+            System.out.println("##########################################");
+
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            con();
+            
+
+        }
+
+    }
+
+    private static void createAccount() throws IOException
+    {
+        try{
+
+            Calendar c=Calendar.getInstance();
+            int date=c.get(Calendar.DATE);
+            int month=c.get(Calendar.MONTH);
+            int year=c.get(Calendar.YEAR);
+            String n,p;
+            int m;
+            long ad;
+            System.out.println("##########################################");
+            System.out.println("Please Enter The Following Details To Create Your Account ");
+            System.out.println("");
+            System.out.print("Your Name : ");
+            n=x.readLine();
+            System.out.print("Your 12 Digit AADHAR Number : ");
+            ad=Long.parseLong(x.readLine());
+            if(String.valueOf(ad).length()<12){
+                System.out.println("##########################################");
+                System.out.println("You have entered wrong Aadhar Number");
+
+            }else{
+                System.out.print("Opening Balance : ");
+                m=Integer.parseInt(x.readLine());
+                System.out.print("Your Password : ");
+                p=x.readLine();
+                
+                System.out.println("Your Account Number is : "+Ano);
+                System.out.println("");
+                System.out.println("YOUR ACCOUNT HAS BEEN CREATED");
+                Acc[Ano]=new Account(n,Ano,m,p);
+                Ano++;
+                
+                int acc= Ano;
+               
+                  if(acc==89510){
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL.txt", "UTF-8");
+                        
+                        writer.println("  ACCOUNT NO = "+ Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+                }
+
+                if(acc==89511)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL2.txt", "UTF-8");
+                        
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+                if(acc==89512)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL3.txt", "UTF-8");
+                        
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+                if(acc==89513)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL4.txt", "UTF-8");
+                        
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+
+                if(acc==89514)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL5.txt", "UTF-8");
+                        
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+                if(acc==89515)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL6.txt", "UTF-8");
+                        
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+                if(acc==89516)
+                    try{
+                        PrintWriter writer = new PrintWriter("DETAIL7.txt", "UTF-8");
+                        
+                        writer.println("  ACCOUNT NO = "+Ano );
+                        writer.println("  NAME = " +n);
+                        writer.println("  BALANCE = " +m);
+                        writer.println("  password = " +p);
+                        writer.close();
+                    } catch (IOException e) {
+
+                    }
+            }
+        }
+
+        catch( Exception e){
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+            
+        }
+
+    }
+
+    private static void withdrawl() throws IOException
+    {
+        try{
+            String p;
+            int no,amt;
+            System.out.println("Please Enter The Following Details To Withdrawl ");
+            System.out.print("Your Account Number : ");
+            no=Integer.parseInt(x.readLine());
+            System.out.print('\f');
+            System.out.print("Password : ");
+
+            p=x.readLine();
+            System.out.print('\f');
+            if(no<Ano && p.equals(Acc[no].Password))
+            {
+                System.out.println("##########################################");
+                System.out.println("Welcome "+Acc[no].Name);
+                System.out.println("Balance available = " + Acc[no].Money); 
+                System.out.print("Withdrawl Amount : ");
+                amt=Integer.parseInt(x.readLine());
+                int ad = Acc[no].Money-amt;
+
+                if(amt<=Acc[no].Money)
+                {
+                    System.out.println(" Withdrawl Successful" );
+                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    System.out.println("Balance left After Withdrawl = " +ad );
+                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    Acc[no].Money-=amt;
+                }
+                else
+                {
+                    System.out.println("##########################################");
+                    System.out.println("Only "+Acc[no].Money+" amount left in your Account");
+                    System.out.println("So you cannot Withdrawl "+amt);
+                }
+
+            }
+            else{
+                System.out.println("##########################################");
+                System.out.println("YOUR ACCOUNT DOES NOT EXIST IN BANK DATABASE");
+                System.out.println("PLEASE CREATE YOUR ACCOUNT ANT THEN TRY AGAIN");
+            }
+        }
+        catch( Exception e){
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+            
+        }
+
+    }
+
+    private static void deposit() throws IOException
+    {
+        try
+        {
+            String p;
+            int no,amt;
+            System.out.println("Please Enter The Following Details To DEPOSIT ");
+            System.out.print("Your Account Number : ");
+            no=Integer.parseInt(x.readLine());
+            System.out.print('\f');
+            System.out.print("Password : ");
+            p=x.readLine();
+            System.out.print('\f');
+            if(no<Ano && p.equals(Acc[no].Password))
+            {
+                System.out.println("##########################################");
+                System.out.println("Welcome "+Acc[no].Name);
+                System.out.println("Current Balance = " +Acc[no].Money );
+                System.out.print("Deposit Amount : ");
+                amt=Integer.parseInt(x.readLine());
+                int db=Acc[no].Money +amt;
+                System.out.println(" Deposit  Successful ");
+                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                System.out.println("Balance After Deposit = " + db);
+                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                Acc[no].Money+=amt;
+
+            }
+            else{
+                System.out.println("##########################################");
+                System.out.println("YOUR ACCOUNT DOES NOT EXIST IN BANK DATABASE ");
+                System.out.println("PLEASE CREATE YOUR ACCOUNT ANT THEN TRY AGAIN");
+
+            }
+        }
+        catch( Exception e){
+
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+            
+        }
+
+    }  
+
+    private static void checkAccount() throws IOException
+    {
+        try{
+            String p;
+            int no,amt;
+            System.out.println("Please Enter The Following Details ");
+            System.out.print("Your Account No. : ");
+            no=Integer.parseInt(x.readLine());
+            System.out.print('\f');
+            System.out.print("Password : ");
+            p=x.readLine();
+            System.out.print('\f');
+            if(no<Ano && p.equals(Acc[no].Password))
+            {
+                System.out.println("##########################################");
+                System.out.println("Your Account Number : "+ no);
+                System.out.println("Your Password : "+ p);
+                System.out.println("Your Name : "+Acc[no].Name);
+                System.out.println("Balance Amount : "+Acc[no].Money);
+
+            }
+            else
+            {
+                System.out.println("##########################################");
+                System.out.println("YOUR ACCOUNT DOES NOT EXIST IN BANK DATABASE ");
+                System.out.println("PLEASE CREATE YOUR ACCOUNT ANT THEN TRY AGAIN");
+
+            }
+            
+        }
+
+        catch( Exception e){
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            System.out.println("Please  TRY AGAIN!!");
+            
+
+        }  
+
+    }
+
+    private static void checkMaster()
+    {
+
+        try{
+            System.out.println("##########################################");
+            System.out.print("ENTER THE MASTER PASSWORD TO CONTINUE -:  " );
+            String pass=x.readLine();
+            System.out.print('\f');
+            String pa= "SARFRAZ";
+
+            if(pass.equals(pa))
+            {
+                String C = "";
+                String x = "";
+                
+                String z = "";
+                String D = "";
+                String Z = "";
+                String L = "";
+                String s = "", line = null;
+                System.out.println("##########################################");
+                System.out.println(" ACCOUNT DETAILS ->");   
+                
+                BufferedReader r = new BufferedReader( new FileReader( "DETAIL.txt" ) );
+                 while ((line = r.readLine()) != null) {
+                    s += line;
+
+                }
+                System.out.println("__________________________________________________________________________________________");
+                System.out.println(s);
+                BufferedReader l = new BufferedReader( new FileReader( "DETAIL2.txt" ) );
+                while ((line = l.readLine()) != null) {
+                    z += line;
+
+                }
+                System.out.println("__________________________________________________________________________________________");
+                System.out.println(z);  
+                BufferedReader Q = new BufferedReader( new FileReader( "DETAIL3.txt" ) );
+                while ((line = Q.readLine()) != null) {
+                    x += line;
+
+                }
+                System.out.println("__________________________________________________________________________________________");
+                System.out.println(x);  
+                BufferedReader P = new BufferedReader( new FileReader( "DETAIL4.txt" ) );
+                while ((line = P.readLine()) != null) {
+                    C += line;
+
+                }
+                System.out.println("__________________________________________________________________________________________");
+                System.out.println(C);
+                BufferedReader Y = new BufferedReader( new FileReader( "DETAIL5.txt" ) );
+                while ((line = Y.readLine()) != null) {
+                    D += line;
+
+                }
+                System.out.println("__________________________________________________________________________________________");
+                System.out.println(D);
+                BufferedReader V  = new BufferedReader( new FileReader( "DETAIL6.txt" ) );
+                while ((line = V.readLine()) != null) {
+                    Z += line;
+
+                }
+                System.out.println("__________________________________________________________________________________________");
+                System.out.println(Z);
+                BufferedReader U  = new BufferedReader( new FileReader( "DETAIL7.txt" ) );
+                while ((line = U.readLine()) != null) {
+                    L += line;
+
+                }
+                System.out.println("__________________________________________________________________________________________");
+                System.out.println(L);
+                System.out.println("__________________________________________________________________________________________");
+            }
+            else{
+                System.out.println("##########################################");
+                System.out.println("ENTERED PASSWORD IS WRONG");
+                System.out.println("##########################################");
+
+            }
+        }
+        catch( Exception e){
+
+            System.out.println("ohh!! No Account Has Been Created Yet To Show :(  ");
+            System.out.println("ERROR  IS-: " +e);
+            System.out.println("Please  Try After Creating An Account!!");
+
+        }
+
+    }      
+
+    private static void loan()throws IOException
+    {
+        String p;
+        int no;
+        int RAN = (int) Math.ceil(Math.random()*100000);
+        try{
+            System.out.println("   SELECT THE FOLLOWING OPTION TO PROCEED    ");
+            System.out.println(" 1 -> FOR HOME LOAN");
+            System.out.println(" 2 -> FOR EDUCATION LOAN");
+            System.out.println(" 3 -> FOR Personal LOAN");
+            System.out.println(" 4 -> FOR CAR LOAN");
+            int chh=Integer.parseInt(x.readLine());
+
+           
+                switch(chh)
+                {
+
+                    case 1:     System.out.println("Please Enter The Following Details To APPLY FOR A LOAN ");
+                    System.out.println("");
+                    System.out.println("ENTER The Amount You Want");
+                    int lam=Integer.parseInt(x.readLine());
+                    System.out.println("");
+                    System.out.println("For How Many Years you want It");
+                    int lye=Integer.parseInt(x.readLine());
+                    System.out.println("INTREST = 8.35%");
+                    System.out.print("Your Account Number : ");
+                    no=Integer.parseInt(x.readLine());
+                    System.out.print("Password : ");
+                    p=x.readLine();
+                    double pay = lam+((lam*lye*8.35)/100);
+                    if(no<Ano && p.equals(Acc[no].Password))
+                    {
+                        System.out.print('\f');
+                        System.out.println("COGRATULATION!! YOU HAVE SUCCESSFULLY APPLIED FOR LOAN ");
+                        System.out.println("The Amount YOU Have TO pay After " + lye + " years is "+pay  );
+                        System.out.println("IT WILL TAKE SOME TIME TO PROCEED ");
+                        System.out.println("YOUR REFERENCE NUMBER = " + RAN );
+                        System.out.println("PLEASE NOTE DOWN YOUR REFERENCE NUMBER ");
+
+                    }
+                    else
+                    {
+                        System.out.print('\f');
+                        System.out.println("##########################################");
+                        System.out.println("YOUR ACCOUNT DOES NOT EXIST IN BANK DATABASE ");
+                        System.out.println("PLEASE CREATE YOUR ACCOUNT ANT THEN TRY AGAIN");
+
+                    }
+                    break;
+                    case 2:System.out.println("Please Enter The Following Details To APPLY FOR A LOAN ");
+                    System.out.println("ENTER The Amount YOU Want");
+                    lam=Integer.parseInt(x.readLine());
+                    System.out.println("For How Many Years you want It");
+                    lye=Integer.parseInt(x.readLine());
+                    System.out.println("INTREST = 8.0%");
+                    System.out.print("Your Account Number : ");
+                    no=Integer.parseInt(x.readLine());
+                    System.out.print("Password : ");
+                    p=x.readLine();
+                    pay = lam+((lam*lye*8.0)/100);
+                    if(no<Ano && p.equals(Acc[no].Password))
+                    {
+                        System.out.print('\f');
+                        System.out.println("COGRATULATION!! YOU HAVE SUCCESSFULLY APPLIED FOR LOAN ");
+                        System.out.println("The Amount YOU Have TO pay After " + lye + " years is "+pay  );
+                        System.out.println("IT WILL TAKE SOME TIME TO PROCEED ");
+                        System.out.println("YOUR REFERENCE NUMBER = " + RAN );
+                        System.out.println("PLEASE NOTE DOWN YOUR REFERENCE NUMBER ");
+
+                    }
+                    else
+                    {
+                        System.out.print('\f');
+                        System.out.println("##########################################");
+                        System.out.println("YOUR ACCOUNT DOES NOT EXIST IN BANK DATABASE ");
+                        System.out.println("PLEASE CREATE YOUR ACCOUNT ANT THEN TRY AGAIN");
+
+                    }
+
+                    break;
+                    case 3:System.out.println("Please Enter The Following Details To APPLY FOR A LOAN ");
+                    System.out.println("ENTER The Amount YOU Want");
+                    lam=Integer.parseInt(x.readLine());
+                    System.out.println("For How Many Years you want It");
+                    lye=Integer.parseInt(x.readLine());
+                    System.out.println("INTREST = 11.0%");
+                    System.out.print("Your Account Number : ");
+                    no=Integer.parseInt(x.readLine());
+                    System.out.print("Password : ");
+                    p=x.readLine();
+                    pay = lam+((lam*lye*11.0)/100);
+                    if(no<Ano && p.equals(Acc[no].Password))
+                    {
+                        System.out.print('\f');
+                        System.out.println("COGRATULATION!! YOU HAVE SUCCESSFULLY APPLIED FOR LOAN ");
+                        System.out.println("The Amount YOU Have TO pay After " + lye + " years is "+pay  );
+                        System.out.println("IT WILL TAKE SOME TIME TO PROCEED ");
+                        System.out.println("YOUR REFERENCE NUMBER = " + RAN );
+                        System.out.println("PLEASE NOTE DOWN YOUR REFERENCE NUMBER ");
+                    }
+                    else
+                    {
+                        System.out.print('\f');
+                        System.out.println("##########################################");
+                        System.out.println("YOUR ACCOUNT DOES NOT EXIST IN BANK DATABASE");
+                        System.out.println("PLEASE CREATE YOUR ACCOUNT ANT THEN TRY AGAIN");
+
+                    }
+
+                    break;
+                    case 4: System.out.println("Please Enter The Following Details To APPLY FOR A LOAN ");
+                    System.out.println("ENTER The Amount YOU Want");
+                    lam=Integer.parseInt(x.readLine());
+                    System.out.println("For How Many Years you want It");
+                    lye=Integer.parseInt(x.readLine());
+                    System.out.println("INTREST = 8.4%");
+                    System.out.print("Your Account Number : ");
+                    no=Integer.parseInt(x.readLine());
+                    System.out.print("Password : ");
+                    p=x.readLine();
+                    pay = lam+((lam*lye*8.4)/100);
+                    if(no<Ano && p.equals(Acc[no].Password))
+                    {
+                        System.out.print('\f');
+                        System.out.println("COGRATULATION!! YOU HAVE SUCCESSFULLY APPLIED FOR LOAN ");
+                        System.out.println("The Amount YOU Have TO pay After " + lye + " years is "+pay  );
+                        System.out.println("IT WILL TAKE SOME TIME TO PROCEED ");
+                        System.out.println("YOUR REFERENCE NUMBER = " + RAN );
+                        System.out.println("PLEASE NOTE DOWN YOUR REFERENCE NUMBER ");
+                    }
+                    else
+                    {
+                        System.out.print('\f');
+                        System.out.println("##########################################");
+                        System.out.println("YOUR ACCOUNT DOES NOT EXIST IN BANK DATABASE ");
+                        System.out.println("PLEASE CREATE YOUR ACCOUNT ANT THEN TRY AGAIN");
+
+                    }
+                    break;
+                    default : System.out.println("YOU MADE SOME MISTAKE. ");
+                }
+                
+                
+                    }  
+
+        catch( Exception e){
+            
+            System.out.println("##########################################");
+            System.out.println("ohh!! YOU MADE SOME MISTAKE ");
+            System.out.println("Mistake that you made is-: " +e);
+            con();
+
+        }
+
+    }
+
+    private static void exit()
+    {
+        System.out.print('\f'); 
+        System.out.println("O O  O O  O O  O O  O O  O O");
+        System.out.println(" ^    ^    ^    ^    ^    ^ ");
+        System.out.println(""); 
+        System.out.println("Thank You For Banking with us ");
+        System.out.println("Have A  GOOD DAY "); 
+        System.out.println("Hope You Have Liked It"); 
+        pic cus=new pic();
+        cus.display();
+        
+    }
+
+    private static void con()throws IOException
+    {
+        System.out.println("******************************************");
+        System.out.println("ENTER 1 TO CONTINUE OR 2 TO EXIT");
+        int   CO=Integer.parseInt(x.readLine());
+        if(CO==1)
+        {
+            System.out.print('\f');  
+            main(); 
+        }
+        else
+        {
+            exit();
+            
+        }
+    }
+}
